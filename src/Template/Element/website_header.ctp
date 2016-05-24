@@ -3,7 +3,10 @@
         <div class="container">
             <!-- HEADER-LOG0 -->
             <div class="header-logo text-center">
-                <a href="index.html"><img src="img/logo.jpg" border="0" /></a> <img src="img/name.jpg" border="0" />
+                <a href="<?php echo $this->request->webroot; ?>">
+                    <img src="<?php echo $this->request->webroot; ?>img/logo.jpg" border="0" />
+                </a>
+                <img src="<?php echo $this->request->webroot; ?>img/name.jpg" border="0" />
             </div>
             <!-- END HEADER LOGO -->
 
@@ -37,7 +40,7 @@
         <!-- HEADER SEARCH SECTION -->
         <div class="header-search slider-home">
             <div class="header-search-bar">
-                <form action="#">
+                <?= $this->Form->create(null,['method'=>'get','url'=>['controller'=>'Website','action'=>'searchMovie']]) ?>
 
                     <div class="search-toggle">
                         <div class="container">
@@ -72,31 +75,32 @@
 
                         <div class="search-value">
                             <div class="keywords">
-                                <input type="text" class="form-control" placeholder="Movie Name">
+                                <input name="string" type="text" class="form-control" placeholder="Movie Name, Year">
                             </div>
 
                             <div class="select-location">
-                                <select class="" data-placeholder="-Producer-">
-                                    <option value="option1">option 1</option>
-                                    <option value="option2">option 2</option>
-                                    <option value="option3">option 3</option>
-                                    <option value="option4">option 4</option>
+                                <select name="directors" class="" data-placeholder="-Select Directors-">
+                                    <?php
+                                    foreach($directors as $director):
+                                        ?>
+                                        <option value="<?= $director ?>"><?= $director ?></option>
+                                        <?php
+                                    endforeach;
+                                    ?>
                                 </select>
                             </div>
 
                             <div class="category-search">
-                                <select class="" data-placeholder="-Select Type-">
-                                    <option value="option1">option 1</option>
-                                    <option value="option2">option 2</option>
-                                    <option value="option3">option 3</option>
-                                    <option value="option4">option 4</option>
+                                <select name="movie_type" class="" data-placeholder="-Select Type-">
+                                    <option value="digital">Digital</option>
+                                    <option value="analog">Analog</option>
                                 </select>
                             </div>
 
                             <button class="search-btn" type="submit"><i class="fa fa-search"></i></button>
                         </div>
                     </div> <!-- END .CONTAINER -->
-                </form>
+                <?= $this->Form->end() ?>
             </div> <!-- END .header-search-bar -->
 
             <div class="slider-content">

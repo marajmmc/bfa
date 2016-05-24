@@ -35,16 +35,52 @@
         <!-- end .custom-search -->
 
         <!-- Category accordion -->
+        <?php
+        if(!empty($categories))
+        {
+            foreach($categories as $category)
+            {
+                if(!empty($category))
+                {
+                    ?>
+                    <li>
+                        <a href="<?php echo $this->request->webroot.'website/searchMovie/'.$category;?>" >
+                            <?php echo $category;?>
+                        </a>
+                    </li>
+                    <?php
+                }
+            }
+        }
+        ?>
         <div id="categories">
             <div class="accordion">
-                <ul class="nav nav-tabs home-tab" role="tablist">
+                <ul class="nav nav-tabs home-tab" >
+
                     <li class="active">
                         <a href="#all-categories"  role="tab" data-toggle="tab">All Categories
                             <span>Display all sub-categories</span>
                         </a>
                     </li>
-
-                    <li>
+                    <?php
+                    if(!empty($categories))
+                    {
+                        foreach($categories as $category)
+                        {
+                            if(!empty($category))
+                            {
+                                ?>
+                                <li>
+                                    <a href="<?php echo $this->request->webroot.'website/'.$category;?>" >
+                                        <?php echo $category;?>
+                                    </a>
+                                </li>
+                                <?php
+                            }
+                        }
+                    }
+                    ?>
+                    <!--<li>
                         <a href="#advertisemnet" role="tab" data-toggle="tab">Art
 
                         </a>
@@ -63,7 +99,7 @@
                     <li>
                         <a href="#" role="tab" data-toggle="tab"><i class="fa fa-angle-right"></i>See More</a>
 
-                    </li>
+                    </li>-->
 
                 </ul>
             </div> <!-- end .accordion -->

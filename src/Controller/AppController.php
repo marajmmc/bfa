@@ -71,6 +71,16 @@ class AppController extends Controller
                 'action' => 'login'
             ]
         ]);
+
+        $moviesTbl =  TableRegistry::get('movies');
+        $directors = $moviesTbl->find('list',['keyField'=>'DIRECTOR','valueField'=>'DIRECTOR'])
+            ->group(['DIRECTOR']);
+        $this->set(compact('directors'));
+
+        $movies_category =  TableRegistry::get('movies');
+        $categories = $movies_category->find('list',['keyField'=>'CATEGORY','valueField'=>'CATEGORY'])
+            ->group(['CATEGORY']);
+        $this->set(compact('categories'));
     }
 
     /**

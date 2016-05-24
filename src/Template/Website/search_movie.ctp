@@ -1,3 +1,4 @@
+
 <div class="col-md-9 col-md-push-3">
     <div class="page-content">
 
@@ -16,7 +17,7 @@
             <div class="row clearfix">
                 <?php
 
-                foreach($all_movies as $movie)
+                foreach($movies as $movie)
                 {
                     if(empty($movie['PICTURENAME']) && !file_exists($this->request->webroot."img/".$movie['PICTURENAME']))
                     {
@@ -26,7 +27,7 @@
                     {
                         $picture_name=$this->request->webroot."img/".$movie['PICTURENAME'];
                     }
-                    ?>
+                   ?>
                     <a href="<?php echo $this->request->webroot.'website/details/'.$movie['NUM'];?>">
                         <div class="col-md-3 col-sm-4 col-xs-6">
                             <div class="category-item">
@@ -34,15 +35,14 @@
                                 <br/>
                                 <?php echo $movie['ORIGINALTITLE'];?> (<?php echo $movie['YEAR'];?>)
                             </div>
+
                         </div>
                     </a>
-                    <?php
+                <?php
                 }
                 ?>
-
             </div> <!-- end .row -->
         </div> <!-- end .tabe-pane -->
-
     </div> <!-- end .tabe-content -->
 
         </div> <!-- end .product-details -->

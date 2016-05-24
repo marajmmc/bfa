@@ -3,6 +3,8 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\Cache\Cache;
+use Cake\ORM\TableRegistry;
+
 /**
  * Dashborad Controller
  *
@@ -24,30 +26,51 @@ class WebsiteController extends AppController
     public function index()
     {
         $this->viewBuilder()->layout('website');
+        $All_moviesTbl =  TableRegistry::get('movies');
+        $all_movies = $All_moviesTbl->find();
+        $this->set(compact('all_movies'));
     }
-    public function details()
+    public function details($id)
     {
         $this->viewBuilder()->layout('website');
+        $moviesTbl =  TableRegistry::get('movies');
+        $movie = $moviesTbl->find();
+        $movie->where(['NUM'=>$id]);
+        $this->set(compact('movie'));
+
     }
-    /*public function login()
+    public function searchMovie($category=null)
     {
-        if ($this->request->is('post'))
+        $this->viewBuilder()->layout('website');
+        $moviesTbl =  TableRegistry::get('movies');
+        $movies = $moviesTbl->find();
+        // check string
+        if(!empty($category))
         {
-            $user = $this->Auth->identify();
-            if ($user)
-            {
-                $this->Auth->setUser($user);
-                $this->Flash->success(__('Your Have succesfully loged in'));
-                return $this->redirect($this->Auth->redirectUrl());
-            }
-            $this->Flash->error(__('Your username or password is incorrect.'));
+            $movies->where(['CATEGORY'=>$category]);
         }
-        $this->viewBuilder()->layout('login');
+        else
+        {
+            $input = $this->request->data;
+            if(is_numeric($input['string']))
+                $movies->where(['YEAR'=>$input['string']]);
+            else
+                $movies->where(['ORIGINALTITLE LIKE'=>$input['string'].'%']);
+
+            if($input['directors'])
+                $movies->where(['DIRECTOR LIKE'=>$input['directors']]);
+
+            if($input['movie_type'])
+                $movies->where(['MOVIE_TYPE LIKE'=>$input['movie_type']]);
+        }
+         $this->set(compact('movies'));
     }
-    public function logout()
+
+    public function searchMovieCategory($category)
     {
-        $this->Flash->success(__('You are now logged out'));
-        //        Cache::clear(false);
-        return $this->redirect($this->Auth->logout());
-    }*/
+        $this->viewBuilder()->layout('website');
+        echo $category;
+    }
+
+
 }
