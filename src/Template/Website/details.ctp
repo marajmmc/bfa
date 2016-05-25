@@ -27,35 +27,92 @@
                 ?>
                     <h3><?php echo $movie_details['ORIGINALTITLE'];?></h3>
                     <div class="row clearfix">
-                        <div class="col-md-6 col-sm-6 col-xs-6">
-                            <div class="category-item">
-                                <img src="<?php echo $picture_name;?>" >
-                                <br/>
-                                <a href="<?php echo $this->request->webroot.'website/details/'.$movie_details['NUM'];?>"><?php echo $movie_details['ORIGINALTITLE'];?> (<?php echo $movie_details['YEAR'];?>) </a>
+                        <div class="col-md-4 col-sm-4 col-xs-4">
+                            <div style="height: 300px; border: 10px solid rgba(255, 249, 142, 0.79); ">
+                                <img style="height: 280px; width: 330px" src="<?php echo $picture_name;?>" >
+
                             </div>
                         </div>
-                        <div class="col-md-6 col-sm-6 col-xs-6">
-                            <span><strong>Title: </strong> <?php echo $movie_details['ORIGINALTITLE'];?></span><br />
-                            <span><strong>Director:</strong> <?php echo $movie_details['DIRECTOR'];?></span><br />
-                            <span><strong>Producer:</strong> <?php echo $movie_details['PRODUCER'];?></span><br />
-                            <span><strong>Writer:</strong> <?php echo $movie_details['WRITER'];?></span><br />
-                            <span><strong>Composer:</strong> <?php echo $movie_details['COMPOSER'];?></span><br />
-                            <span><strong>Country:</strong> <?php echo $movie_details['COUNTRY'];?></span><br />
-                            <span><strong>Media Type:</strong> <?php echo $movie_details['MOVIE_TYPE'];?></span><br />
-                            <span><strong>Rating:</strong> <?php echo $movie_details['RATING'];?></span><br />
-                            <span><strong>Category:</strong> <?php echo $movie_details['CATEGORY'];?></span><br />
-                            <span><strong>Certification:</strong> <?php echo $movie_details['CERTIFICATION'];?></span><br />
-                            <span><strong>Year:</strong> <?php echo $movie_details['YEAR'];?></span><br />
-                            <span><strong>Length:</strong> <?php echo $movie_details['LENGTH'];?></span><br />
-                            <span><strong>Movie Type:</strong> <?php echo $movie_details['MOVIE_TYPE'];?></span><br />
+                        <div class="col-md-6 col-sm-6 col-xs-6" style="">
+                            <table class="table" style="width: 100%;">
+                                <tr>
+                                    <th width="20%" style="text-align: left;">Title</th>
+                                    <th width="2%" style="text-align: left;">:</th>
+                                    <td width="78%" style="text-align: left;"><?php echo $movie_details['ORIGINALTITLE'];?></td>
+                                </tr>
+                                <tr>
+                                    <th width="20%" style="text-align: left;">Director</th>
+                                    <th width="2%" style="text-align: left;">:</th>
+                                    <td width="78%" style="text-align: left;"><?php echo $movie_details['DIRECTOR'];?></td>
+                                </tr>
+                                <tr>
+                                    <th width="20%" style="text-align: left;">Producer</th>
+                                    <th width="2%" style="text-align: left;">:</th>
+                                    <td width="78%" style="text-align: left;"><?php echo $movie_details['PRODUCER'];?></td>
+                                </tr>
+                                <tr>
+                                    <th width="20%" style="text-align: left;">Writer</th>
+                                    <th width="2%" style="text-align: left;">:</th>
+                                    <td width="78%" style="text-align: left;"><?php echo $movie_details['WRITER'];?></td>
+                                </tr>
+                                <tr>
+                                    <th width="20%" style="text-align: left;">Composer</th>
+                                    <th width="2%" style="text-align: left;">:</th>
+                                    <td width="78%" style="text-align: left;"><?php echo $movie_details['COMPOSER'];?></td>
+                                </tr>
+                                <tr>
+                                    <th width="20%" style="text-align: left;">Country</th>
+                                    <th width="2%" style="text-align: left;">:</th>
+                                    <td width="78%" style="text-align: left;"><?php echo $movie_details['COUNTRY'];?></td>
+                                </tr>
+                                <tr>
+                                    <th width="20%" style="text-align: left;">Media Type</th>
+                                    <th width="2%" style="text-align: left;">:</th>
+                                    <td width="78%" style="text-align: left;"><?php echo $movie_details['MOVIE_TYPE'];?></td>
+                                </tr>
+                                <tr>
+                                    <th width="20%" style="text-align: left;">Rating</th>
+                                    <th width="2%" style="text-align: left;">:</th>
+                                    <td width="78%" style="text-align: left;"><?php echo $movie_details['RATING'];?></td>
+                                </tr>
+                                <tr>
+                                    <th width="20%" style="text-align: left;">Category</th>
+                                    <th width="2%" style="text-align: left;">:</th>
+                                    <td width="78%" style="text-align: left;"><?php echo $movie_details['CATEGORY'];?></td>
+                                </tr>
+                                <tr>
+                                    <th width="20%" style="text-align: left;">Certification</th>
+                                    <th width="2%" style="text-align: left;">:</th>
+                                    <td width="78%" style="text-align: left;"><?php echo $movie_details['CERTIFICATION'];?></td>
+                                </tr>
+                                <tr>
+                                    <th width="20%" style="text-align: left;">Year</th>
+                                    <th width="2%" style="text-align: left;">:</th>
+                                    <td width="78%" style="text-align: left;"><?php echo $movie_details['YEAR'];?></td>
+                                </tr>
+                                <tr>
+                                    <th width="20%" style="text-align: left;">Length</th>
+                                    <th width="2%" style="text-align: left;">:</th>
+                                    <td width="78%" style="text-align: left;"><?php echo $movie_details['LENGTH'];?></td>
+                                </tr>
+                            </table>
                         </div>
                     </div>
-                    <br />
+                        <br />
                     <div class="row clearfix">
                         <div class="col-md-12 col-sm-12 col-xs-12">
-                            <span><strong>Actors: </strong> <?php echo $movie_details['ACTORS'];?></span><br /><br />
-                            <span><strong>Description: </strong> <?php echo $movie_details['DESCRIPTION'];?></span><br /><br />
-                            <span><strong>Comment: </strong> <?php echo $movie_details['COMMENTS'];?></span><br />
+                            <span>
+                                <strong>Actors: <hr /></strong>
+                                <?php echo $movie_details['ACTORS'];?>
+                            </span><br /><br />
+                            <span>
+                                <strong>Description: <hr /></strong>
+                                <?php echo $movie_details['DESCRIPTION'];?>
+                            </span><br /><br />
+                            <span>
+                                <strong>Comment: <hr /></strong>
+                                <?php echo $movie_details['COMMENTS'];?>
+                            </span><br />
                         </div>
                     </div>
                 <?php
