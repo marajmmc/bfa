@@ -22,7 +22,7 @@
                 }
                 else
                 {
-                    $picture_name=$this->request->webroot."img/".$movie_details['PICTURENAME'];
+                    $picture_name=$this->request->webroot."img/movies/".$movie_details['PICTURENAME'];
                 }
                 ?>
                     <h3><?php echo $movie_details['ORIGINALTITLE'];?></h3>

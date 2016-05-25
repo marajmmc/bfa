@@ -36,7 +36,7 @@
                         }
                         else
                         {
-                            $picture_name=$this->request->webroot."img/".$movie['PICTURENAME'];
+                            $picture_name=$this->request->webroot."img/movies/".$movie['PICTURENAME'];
                         }
                         ?>
                         <a href="<?php echo $this->request->webroot.'website/details/'.$movie['NUM'];?>">
