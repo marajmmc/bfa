@@ -86,6 +86,8 @@ License: You must have a valid license purchased only from softbd
             </div> <!-- end .copyright-->
         </footer> <!-- end #footer -->
     </div>
+
+
     <!-- END CONTAINER -->
     <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
     <!-- BEGIN CORE PLUGINS -->
@@ -99,6 +101,36 @@ License: You must have a valid license purchased only from softbd
     <script src="<?= $this->request->webroot; ?>website/js/bootstrap.min.js"></script>
     <script src="<?= $this->request->webroot; ?>website/js/owl.carousel.js"></script>
     <script src="<?= $this->request->webroot; ?>website/js/scripts.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
+    <script>
+        $(document).ready(function() {
+            $(document).on('focus', '#search_string', function () {
+                $(this).autocomplete({
+                    source: function (request, response) {
+                        $.ajax({
+                            type: 'POST',
+                            url: "<?= $this->Url->build('/Website/get_movies')?>",
+                            dataType: "json",
+                            data: {
+                                qstring: request.term
+                            },
+                            success: function (data) {
+                                response(data);
+                            }
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+
+<style>
+    .ui-widget-content .ui-menu-divider
+    {
+        height: 50px;
+    }
+</style>
 </body>
 <!-- END BODY -->
 </html>

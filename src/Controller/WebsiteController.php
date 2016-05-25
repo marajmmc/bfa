@@ -73,5 +73,16 @@ class WebsiteController extends AppController
         echo $category;
     }
 
+    public function getMovies()
+    {
+        $qString = $this->request->data('qstring');
 
+        $movies = TableRegistry::get('movies')->find();
+        $movies->select(['label'=>'ORIGINALTITLE']);
+        $movies->where(['ORIGINALTITLE like' => $qString . '%']);
+        $movies->orWhere(['YEAR like' => $qString . '%']);
+
+        $this->response->body(json_encode($movies));
+        return $this->response;
+    }
 }
