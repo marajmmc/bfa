@@ -12,45 +12,60 @@
         <div class="tab-content">
 
         <div class="tab-pane active" id="all-categories">
-            <h3>List of <span>Movies</span></h3>
-
-            <div class="row clearfix">
-                <?php
-
-                foreach($movies as $movie)
-                {
-                    if(empty($movie['PICTURENAME']) && !file_exists($this->request->webroot."img/".$movie['PICTURENAME']))
-                    {
-                        $picture_name=$this->request->webroot."img/film_strip_blank.png";
-                    }
-                    else
-                    {
-                        $picture_name=$this->request->webroot."img/".$movie['PICTURENAME'];
-                    }
-                   ?>
-                    <a href="<?php echo $this->request->webroot.'website/details/'.$movie['NUM'];?>">
-                        <div class="col-md-3 col-sm-4 col-xs-6">
-                            <div class="category-item">
-                                <img src="<?php echo $picture_name;?>" >
-                                <br/>
-                                <?php echo $movie['ORIGINALTITLE'];?> (<?php echo $movie['YEAR'];?>)
-                            </div>
-
-                        </div>
-                    </a>
-                <?php
-                }
+            <?php
+            if(!$movies->count())
+            {
                 ?>
-            </div> <!-- end .row -->
-            <div class="blog-list-pagination">
-                <ul class="pagination">
+                <h3 style="color: red">
+                    Data not found
+                </<h3>
+                <?php
+            }
+            else
+            {
+                ?>
+                <h3>List of <span>Movies</span></h3>
+
+                <div class="row clearfix">
                     <?php
-                    echo $this->Paginator->prev('<');
-                    echo $this->Paginator->numbers();
-                    echo $this->Paginator->next('>');
+                    foreach($movies as $movie)
+                    {
+                        if(empty($movie['PICTURENAME']) && !file_exists($this->request->webroot."img/".$movie['PICTURENAME']))
+                        {
+                            $picture_name=$this->request->webroot."img/film_strip_blank.png";
+                        }
+                        else
+                        {
+                            $picture_name=$this->request->webroot."img/".$movie['PICTURENAME'];
+                        }
+                        ?>
+                        <a href="<?php echo $this->request->webroot.'website/details/'.$movie['NUM'];?>">
+                            <div class="col-md-3 col-sm-4 col-xs-6">
+                                <div class="category-item">
+                                    <img src="<?php echo $picture_name;?>" >
+                                    <br/>
+                                    <?php echo $movie['ORIGINALTITLE'];?> (<?php echo $movie['YEAR'];?>)
+                                </div>
+
+                            </div>
+                        </a>
+                        <?php
+                    }
                     ?>
-                </ul>
-            </div>
+                </div> <!-- end .row -->
+                <div class="blog-list-pagination">
+                    <ul class="pagination">
+                        <?php
+                        echo $this->Paginator->prev('<');
+                        echo $this->Paginator->numbers();
+                        echo $this->Paginator->next('>');
+                        ?>
+                    </ul>
+                </div>
+            <?php
+            }
+            ?>
+
         </div> <!-- end .tabe-pane -->
     </div> <!-- end .tabe-content -->
 

@@ -32,15 +32,12 @@
 
         </div>
     </div>
-    <?php
-    $get_method = $this->request->params;
-    if ($get_method['action'] == "index") {
-        ?>
+
         <!-- HEADER SEARCH SECTION -->
         <div class="header-search slider-home">
             <div class="header-search-bar">
                 <?= $this->Form->create(null,['type'=>'get','url'=>['controller'=>'Website','action'=>'searchMovie']]) ?>
-                <div class="search-toggle">
+                <!--<div class="search-toggle">
                     <div class="container">
                         <p>Details:</p>
                         <div class="select-country">
@@ -65,10 +62,11 @@
                         <button class="search-btn" type="submit"><i class="fa fa-search"></i></button>
 
                     </div>
-                </div>  <!-- END .search-toggle -->
+                </div>  -->
+                <!-- END .search-toggle -->
 
                 <div class="container">
-                    <button class="toggle-btn" type="submit"><i class="fa fa-bars"></i></button>
+                    <!--<button class="toggle-btn" type="submit"><i class="fa fa-bars"></i></button>-->
 
                     <div class="search-value">
                         <div class="keywords">
@@ -99,19 +97,25 @@
                 </div> <!-- END .CONTAINER -->
                 <?= $this->Form->end() ?>
             </div> <!-- END .header-search-bar -->
-
+            <?php
+            $get_method = $this->request->params;
+            $search_css="style='margin-top: 100px;'";
+            if ($get_method['action'] == "index")
+            {
+                $search_css='';
+            ?>
             <div class="slider-content">
 
                 <div id="home-slider" class="owl-carousel owl-theme">
 
-                    <div class="item"><img src="img/content/home-slide-img.jpg" alt="">
+                    <div class="item"><img src="<?php echo $this->request->webroot; ?>img/slider/1.jpg" alt="">
                         <div class="slide-content"></div>
                     </div>
-                    <div class="item"><img src="img/content/home-slider-img-two.jpg" alt="">
+                    <div class="item"><img src="<?php echo $this->request->webroot; ?>img/slider/2.png" alt="">
                         <div class="slide-content">
                         </div>
                     </div>
-                    <div class="item"><img src="img/content/home-slide-img.jpg" alt="">
+                    <div class="item"><img src="<?php echo $this->request->webroot; ?>img/slider/3.png" alt="">
                         <div class="slide-content">
 
                         </div>
@@ -124,19 +128,20 @@
                 </div>
 
             </div> <!-- END .slider-content -->
+                <?php
+            }
+            ?>
         </div>
         <!-- END .SEARCH and slide-section -->
-        <?php
-    }
-    ?>
+
     <div class="container">
-        <div class="header-nav-bar home-slide">
+        <div class="header-nav-bar home-slide" <?php echo $search_css;?>>
             <nav>
 
                 <button><i class="fa fa-bars"></i></button>
 
                 <ul class="primary-nav list-unstyled">
-                    <li class="bg-color"><a href="#">Home<i class="fa fa-angle-down"></i></a>
+                    <li class="bg-color"><a href="<?php echo $this->request->webroot; ?>">Home<i class="fa fa-angle-down"></i></a>
 
 
                     </li>

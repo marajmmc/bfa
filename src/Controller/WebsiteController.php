@@ -51,20 +51,27 @@ class WebsiteController extends AppController
         // check conditions
             if(isset($inpt['category']) && $inpt['category'])
                 $movies->where(['CATEGORY'=>$inpt['category']]);
-            if(isset($inpt['string']) && $inpt['string']){
+            if(isset($inpt['string']) && $inpt['string'])
+            {
                 if(is_numeric($inpt['string']))
                     $movies->where(['YEAR'=>$inpt['string']]);
                 else
                     $movies->where(['ORIGINALTITLE LIKE'=>$inpt['string'].'%']);
-
             }
-            if(isset($inpt['directors']) && $inpt['movie_type'])
-                $movies->where(['DIRECTOR LIKE'=>isset($inpt['directors'])]);
+            if(isset($inpt['directors']) && $inpt['directors'])
+                $movies->where(['DIRECTOR LIKE'=>$inpt['directors']]);
+
+            if(isset($inpt['actors']) && $inpt['actors'])
+                $movies->where(['ACTORS LIKE'=>$inpt['actors']]);
 
             if(isset($inpt['movie_type']) && $inpt['movie_type'])
-                $movies->where(['MOVIE_TYPE LIKE'=>isset($inpt['movie_type'])]);
+                $movies->where(['MOVIE_TYPE'=>$inpt['movie_type']]);
 
-        $this->set('movies',$this->paginate($movies));
+            /*echo "<pre>";
+            print_r($movies->sql());
+            echo "</pre>";*/
+
+            $this->set('movies',$this->paginate($movies));
     }
 
     public function searchMovieCategory($category)

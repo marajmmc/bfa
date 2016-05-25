@@ -1,6 +1,5 @@
 <div class="col-md-9 col-md-push-3">
     <div class="page-content">
-
     <!--<div class="change-view">
         <div class="filter-input">
             <input type="text" placeholder="Filter by Keywords">
