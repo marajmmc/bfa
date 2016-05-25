@@ -80,14 +80,11 @@ class WebsiteController extends AppController
         $movies = TableRegistry::get('movies')->find();
         $movies->select(['label'=>'ORIGINALTITLE']);
 
-        if(is_int($qString))
-        {
+        if(is_int($qString)):
             $movies->Where(['YEAR like' => $qString . '%']);
-        }
-        else
-        {
+        else:
             $movies->where(['ORIGINALTITLE like' => $qString . '%']);
-        }
+        endif;
 
         $this->response->body(json_encode($movies));
         return $this->response;
