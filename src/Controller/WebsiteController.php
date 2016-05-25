@@ -81,7 +81,7 @@ class WebsiteController extends AppController
         $movies->select(['label'=>'ORIGINALTITLE']);
 
         if(is_int($qString)):
-            $movies->Where(['YEAR like' => $qString . '%']);
+            $movies->where(['YEAR like' => $qString . '%']);
         else:
             $movies->where(['ORIGINALTITLE like' => $qString . '%']);
         endif;
