@@ -42,31 +42,29 @@ class WebsiteController extends AppController
         $this->set(compact('movie'));
 
     }
-    public function searchMovie($category=null)
+    public function searchMovie()
     {
+        $inpt = $this->request->query;
         $this->viewBuilder()->layout('website');
         $moviesTbl =  TableRegistry::get('movies');
         $movies = $moviesTbl->find();
-        // check string
-        if(!empty($category))
-        {
-            $movies->where(['CATEGORY'=>$category]);
-        }
-        else
-        {
-            $input = $this->request->data;
-            if(is_numeric($input['string']))
-                $movies->where(['YEAR'=>$input['string']]);
-            else
-                $movies->where(['ORIGINALTITLE LIKE'=>$input['string'].'%']);
+        // check conditions
+            if(isset($inpt['category']) && $inpt['category'])
+                $movies->where(['CATEGORY'=>$inpt['category']]);
+            if(isset($inpt['string']) && $inpt['string']){
+                if(is_numeric($inpt['string']))
+                    $movies->where(['YEAR'=>$inpt['string']]);
+                else
+                    $movies->where(['ORIGINALTITLE LIKE'=>$inpt['string'].'%']);
 
-            if($input['directors'])
-                $movies->where(['DIRECTOR LIKE'=>$input['directors']]);
+            }
+            if(isset($inpt['directors']) && $inpt['movie_type'])
+                $movies->where(['DIRECTOR LIKE'=>isset($inpt['directors'])]);
 
-            if($input['movie_type'])
-                $movies->where(['MOVIE_TYPE LIKE'=>$input['movie_type']]);
-        }
-         $this->set(compact('movies'));
+            if(isset($inpt['movie_type']) && $inpt['movie_type'])
+                $movies->where(['MOVIE_TYPE LIKE'=>isset($inpt['movie_type'])]);
+
+        $this->set('movies',$this->paginate($movies));
     }
 
     public function searchMovieCategory($category)

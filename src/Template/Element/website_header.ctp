@@ -40,7 +40,7 @@
         <!-- HEADER SEARCH SECTION -->
         <div class="header-search slider-home">
             <div class="header-search-bar">
-                <?= $this->Form->create(null,['method'=>'get','url'=>['controller'=>'Website','action'=>'searchMovie']]) ?>
+                <?= $this->Form->create(null,['type'=>'get','url'=>['controller'=>'Website','action'=>'searchMovie']]) ?>
 
                     <div class="search-toggle">
                         <div class="container">

@@ -42,6 +42,15 @@
                 }
                 ?>
             </div> <!-- end .row -->
+            <div class="blog-list-pagination">
+                <ul class="pagination">
+                    <?php
+                    echo $this->Paginator->prev('<');
+                    echo $this->Paginator->numbers();
+                    echo $this->Paginator->next('>');
+                    ?>
+                </ul>
+            </div>
         </div> <!-- end .tabe-pane -->
     </div> <!-- end .tabe-content -->
 

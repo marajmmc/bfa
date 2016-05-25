@@ -44,7 +44,7 @@
                 {
                     ?>
                     <li>
-                        <a href="<?php echo $this->request->webroot.'website/searchMovie/'.$category;?>" >
+                        <a href="<?php echo $this->request->webroot.'website/searchMovie/?category='.$category;?>" >
                             <?php echo $category;?>
                         </a>
                     </li>
