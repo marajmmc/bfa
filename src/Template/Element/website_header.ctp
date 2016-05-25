@@ -4,9 +4,9 @@
             <!-- HEADER-LOG0 -->
             <div class="header-logo text-center">
                 <a href="<?php echo $this->request->webroot; ?>">
-                    <img src="<?php echo $this->request->webroot; ?>img/logo.jpg" border="0" />
+                    <img src="<?php echo $this->request->webroot; ?>img/logo.jpg" border="0"/>
                 </a>
-                <img src="<?php echo $this->request->webroot; ?>img/name.jpg" border="0" />
+                <img src="<?php echo $this->request->webroot; ?>img/name.jpg" border="0"/>
             </div>
             <!-- END HEADER LOGO -->
 
@@ -33,73 +33,70 @@
         </div>
     </div>
     <?php
-    $get_method=$this->request->params;
-    if($get_method['action']=="index")
-    {
+    $get_method = $this->request->params;
+    if ($get_method['action'] == "index") {
         ?>
         <!-- HEADER SEARCH SECTION -->
         <div class="header-search slider-home">
             <div class="header-search-bar">
                 <?= $this->Form->create(null,['type'=>'get','url'=>['controller'=>'Website','action'=>'searchMovie']]) ?>
-
-                    <div class="search-toggle">
-                        <div class="container">
-                            <p>Details:</p>
-                            <div class="select-country">
-                                <input type="text" placeholder="-Title-">
-                            </div>
-
-                            <div class="region">
-                                <input type="text" placeholder="-Genre-">
-                            </div>
-                            <div class="category-search">
-                                <select class="" data-placeholder="-Select category-">
-                                    <option value="option1">option 1</option>
-                                    <option value="option2">option 2</option>
-                                    <option value="option3">option 3</option>
-                                </select>
-                            </div>
-                            <div class="address">
-                                <input type="text" placeholder="-Director-">
-                            </div>
-
-
-
-                            <button class="search-btn" type="submit"><i class="fa fa-search"></i></button>
-
-                        </div>
-                    </div>  <!-- END .search-toggle -->
-
+                <div class="search-toggle">
                     <div class="container">
-                        <button class="toggle-btn" type="submit"><i class="fa fa-bars"></i></button>
-
-                        <div class="search-value">
-                            <div class="keywords">
-                                <input name="string" type="text" class="form-control" placeholder="Movie Name, Year">
-                            </div>
-
-                            <div class="select-location">
-                                <select name="directors" class="" data-placeholder="-Select Directors-">
-                                    <?php
-                                    foreach($directors as $director):
-                                        ?>
-                                        <option value="<?= $director ?>"><?= $director ?></option>
-                                        <?php
-                                    endforeach;
-                                    ?>
-                                </select>
-                            </div>
-
-                            <div class="category-search">
-                                <select name="movie_type" class="" data-placeholder="-Select Type-">
-                                    <option value="digital">Digital</option>
-                                    <option value="analog">Analog</option>
-                                </select>
-                            </div>
-
-                            <button class="search-btn" type="submit"><i class="fa fa-search"></i></button>
+                        <p>Details:</p>
+                        <div class="select-country">
+                            <input type="text" placeholder="-Title-">
                         </div>
-                    </div> <!-- END .CONTAINER -->
+
+                        <div class="region">
+                            <input type="text" placeholder="-Genre-">
+                        </div>
+                        <div class="category-search">
+                            <select class="" data-placeholder="-Select category-">
+                                <option value="option1">option 1</option>
+                                <option value="option2">option 2</option>
+                                <option value="option3">option 3</option>
+                            </select>
+                        </div>
+                        <div class="address">
+                            <input type="text" placeholder="-Director-">
+                        </div>
+
+
+                        <button class="search-btn" type="submit"><i class="fa fa-search"></i></button>
+
+                    </div>
+                </div>  <!-- END .search-toggle -->
+
+                <div class="container">
+                    <button class="toggle-btn" type="submit"><i class="fa fa-bars"></i></button>
+
+                    <div class="search-value">
+                        <div class="keywords">
+                            <input type="text" name="string" class="form-control" id="search_string" placeholder="Movie Name, Year">
+                        </div>
+
+                        <div class="select-location">
+                            <select name="directors" class="" data-placeholder="-Select Directors-">
+                                <?php
+                                foreach ($directors as $director):
+                                    ?>
+                                    <option value="<?= $director ?>"><?= $director ?></option>
+                                    <?php
+                                endforeach;
+                                ?>
+                            </select>
+                        </div>
+
+                        <div class="category-search">
+                            <select name="movie_type" class="" data-placeholder="-Select Type-">
+                                <option value="digital">Digital</option>
+                                <option value="analog">Analog</option>
+                            </select>
+                        </div>
+
+                        <button class="search-btn" type="submit"><i class="fa fa-search"></i></button>
+                    </div>
+                </div> <!-- END .CONTAINER -->
                 <?= $this->Form->end() ?>
             </div> <!-- END .header-search-bar -->
 
@@ -129,7 +126,7 @@
             </div> <!-- END .slider-content -->
         </div>
         <!-- END .SEARCH and slide-section -->
-    <?php
+        <?php
     }
     ?>
     <div class="container">
@@ -150,3 +147,4 @@
         </div> <!-- end .header-nav-bar -->
     </div> <!-- end .container -->
 </header>
+
